@@ -1,0 +1,49 @@
+# Room Class
+class Room:
+    """Class to represent a room"""
+
+    # Constructor/initializer
+    def __init__(self, roomnumber, roomtype, isavailable=True, amenities=None):
+        if amenities is None:
+            amenities = []
+        self.__roomnumber = roomnumber
+        self.__roomtype = roomtype
+        self.__isavailable = isavailable
+        self.__amenities = amenities
+
+    # Setter and Getter methods
+    def setroomnumber(self, number):
+        self.__roomnumber = number
+
+    def getroomnumber(self):
+        return self.__roomnumber
+
+    def setroomtype(self, type):
+        self.__roomtype = type
+
+    def getroomtype(self):
+        return self.__roomtype
+
+    def setisavailable(self, available):
+        self.__isavailable = available
+
+    def getisavailable(self):
+        return self.__isavailable
+
+    def setamenities(self, amenities):
+        self.__amenities = amenities
+
+    def getamenities(self):
+        return self.__amenities
+
+    # Method to display room information
+    def displayRoomInfo(self):
+        availability = "Available" if self.__isavailable else "Not Available"
+        print(f"Room Number: {self.__roomnumber}")
+        print(f"Room Type: {self.__roomtype}")
+        print(f"Availability: {availability}")
+        print(f"Amenities: {', '.join(self.__amenities)}")
+
+    # Destructor
+    def __del__(self):
+        print(f"The room {self.__roomnumber} was deleted.")
