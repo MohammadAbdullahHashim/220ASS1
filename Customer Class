@@ -1,0 +1,47 @@
+# Customer Class
+class Customer:
+    """Class to represent a customer"""
+
+    # Constructor/initializer
+    def __init__(self, customername, email, phonenumber, reservation=None):
+        self.__customername = customername
+        self.__email = email
+        self.__phonenumber = phonenumber
+        self.__reservation = reservation  # Reservation object
+
+    # Setter and Getter methods
+    def setcustomername(self, name):
+        self.__customername = name
+
+    def getcustomername(self):
+        return self.__customername
+
+    def setemail(self, email):
+        self.__email = email
+
+    def getemail(self):
+        return self.__email
+
+    def setphonenumber(self, phone):
+        self.__phonenumber = phone
+
+    def getphonenumber(self):
+        return self.__phonenumber
+
+    def setreservation(self, reservation):
+        self.__reservation = reservation
+
+    def getreservation(self):
+        return self.__reservation
+
+    # Method to display customer information
+    def displayCustomerInfo(self):
+        print(f"Customer Name: {self.__customername}")
+        print(f"Email: {self.__email}")
+        print(f"Phone Number: {self.__phonenumber}")
+        if self.__reservation:
+            self.__reservation.displayReservationInfo()
+
+    # Destructor
+    def __del__(self):
+        print(f"The customer record for {self.__customername} was deleted.")
