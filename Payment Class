@@ -1,0 +1,46 @@
+# Payment Class
+class Payment:
+    """Class to represent payment information"""
+
+    # Constructor/initializer
+    def __init__(self, paymentid, amount, paymentstatus='Pending', paymentmethod='Credit Card'):
+        self.__paymentid = paymentid
+        self.__amount = amount
+        self.__paymentstatus = paymentstatus
+        self.__paymentmethod = paymentmethod
+
+    # Setter and Getter methods
+    def setpaymentid(self, id):
+        self.__paymentid = id
+
+    def getpaymentid(self):
+        return self.__paymentid
+
+    def setamount(self, amount):
+        self.__amount = amount
+
+    def getamount(self):
+        return self.__amount
+
+    def setpaymentStatus(self, status):
+        self.__paymentstatus = status
+
+    def getpaymentStatus(self):
+        return self.__paymentstatus
+
+    def setpaymentMethod(self, method):
+        self.__paymentmethod = method
+
+    def getpaymentMethod(self):
+        return self.__paymentmethod
+
+    # Method to display payment information
+    def displayPaymentInfo(self):
+        print(f"Payment ID: {self.__paymentid}")
+        print(f"Amount: ${self.__amount}")
+        print(f"Status: {self.__paymentstatus}")
+        print(f"Method: {self.__paymentmethod}")
+
+    # Destructor
+    def __del__(self):
+        print(f"The payment record {self.__paymentid} was deleted.")
