@@ -1,0 +1,64 @@
+# Reservation Class
+class Reservation:
+    """Class to represent a reservation"""
+
+    # Constructor/initializer
+    def __init__(self, reservationid, checkindate, checkoutdate, room, status='Pending', payment=None):
+        self.__reservationid = reservationid
+        self.__checkindate = checkindate
+        self.__checkoutdate = checkoutdate
+        self.__room = room  # Room object
+        self.__status = status
+        self.__payment = payment  # Payment object
+
+    # Setter and Getter methods
+    def setreservationid(self, id):
+        self.__reservationid = id
+
+    def getreservationid(self):
+        return self.__reservationid
+
+    def setcheckindate(self, date):
+        self.__checkindate = date
+
+    def getcheckindate(self):
+        return self.__checkindate
+
+    def setcheckoutdate(self, date):
+        self.__checkoutdate = date
+
+    def getcheckoutdate(self):
+        return self.__checkoutdate
+
+    def setroom(self, room):
+        self.__room = room
+
+    def getroom(self):
+        return self.__room
+
+    def setstatus(self, status):
+        self.__status = status
+
+    def getstatus(self):
+        return self.__status
+
+    def setpayment(self, payment):
+        self.__payment = payment
+
+    def getpayment(self):
+        return self.__payment
+
+    # Method to display reservation information
+    def displayReservationInfo(self):
+        print(f"Reservation ID: {self.__reservationid}")
+        print(f"Status: {self.__status}")
+        print(f"Check-in Date: {self.__checkindate}")
+        print(f"Check-out Date: {self.__checkoutdate}")
+        if self.__room:
+            self.__room.displayRoomInfo()
+        if self.__payment:
+            self.__payment.displayPaymentInfo()
+
+    # Destructor
+    def __del__(self):
+        print(f"The reservation {self.__reservationid} was deleted.")
