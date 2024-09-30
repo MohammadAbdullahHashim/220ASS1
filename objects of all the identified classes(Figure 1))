@@ -1,0 +1,243 @@
+# Room Class
+class Room:
+    """Class to represent a room"""
+
+    # Constructor/initializer
+    def __init__(self, roomnumber, roomtype, isavailable=True, amenities=None):
+        if amenities is None:
+            amenities = []
+        self.__roomnumber = roomnumber
+        self.__roomtype = roomtype
+        self.__isavailable = isavailable
+        self.__amenities = amenities
+
+    # Setter and Getter methods
+    def setroomnumber(self, number):
+        self.__roomnumber = number
+
+    def getroomnumber(self):
+        return self.__roomnumber
+
+    def setroomtype(self, type):
+        self.__roomtype = type
+
+    def getroomtype(self):
+        return self.__roomtype
+
+    def setisavailable(self, available):
+        self.__isavailable = available
+
+    def getisavailable(self):
+        return self.__isavailable
+
+    def setamenities(self, amenities):
+        self.__amenities = amenities
+
+    def getamenities(self):
+        return self.__amenities
+
+    # Method to display room information
+    def displayRoomInfo(self):
+        availability = "Available" if self.__isavailable else "Not Available"
+        print(f"Room Number: {self.__roomnumber}")
+        print(f"Room Type: {self.__roomtype}")
+        print(f"Availability: {availability}")
+        print(f"Amenities: {', '.join(self.__amenities)}")
+
+    # Destructor
+    def __del__(self):
+        print(f"The room {self.__roomnumber} was deleted.")
+
+
+# Payment Class
+class Payment:
+    """Class to represent payment information"""
+
+    # Constructor/initializer
+    def __init__(self, paymentid, amount, paymentstatus='Pending', paymentmethod='Credit Card'):
+        self.__paymentid = paymentid
+        self.__amount = amount
+        self.__paymentstatus = paymentstatus
+        self.__paymentmethod = paymentmethod
+
+    # Setter and Getter methods
+    def setpaymentid(self, id):
+        self.__paymentid = id
+
+    def getpaymentid(self):
+        return self.__paymentid
+
+    def setamount(self, amount):
+        self.__amount = amount
+
+    def getamount(self):
+        return self.__amount
+
+    def setpaymentStatus(self, status):
+        self.__paymentstatus = status
+
+    def getpaymentStatus(self):
+        return self.__paymentstatus
+
+    def setpaymentMethod(self, method):
+        self.__paymentmethod = method
+
+    def getpaymentMethod(self):
+        return self.__paymentmethod
+
+    # Method to display payment information
+    def displayPaymentInfo(self):
+        print(f"Payment ID: {self.__paymentid}")
+        print(f"Amount: ${self.__amount}")
+        print(f"Status: {self.__paymentstatus}")
+        print(f"Method: {self.__paymentmethod}")
+
+    # Destructor
+    def __del__(self):
+        print(f"The payment record {self.__paymentid} was deleted.")
+
+
+# Reservation Class
+class Reservation:
+    """Class to represent a reservation"""
+
+    # Constructor/initializer
+    def __init__(self, reservationid, checkindate, checkoutdate, room, status='Pending', payment=None):
+        self.__reservationid = reservationid
+        self.__checkindate = checkindate
+        self.__checkoutdate = checkoutdate
+        self.__room = room  # Room object
+        self.__status = status
+        self.__payment = payment  # Payment object
+
+    # Setter and Getter methods
+    def setreservationid(self, id):
+        self.__reservationid = id
+
+    def getreservationid(self):
+        return self.__reservationid
+
+    def setcheckindate(self, date):
+        self.__checkindate = date
+
+    def getcheckindate(self):
+        return self.__checkindate
+
+    def setcheckoutdate(self, date):
+        self.__checkoutdate = date
+
+    def getcheckoutdate(self):
+        return self.__checkoutdate
+
+    def setroom(self, room):
+        self.__room = room
+
+    def getroom(self):
+        return self.__room
+
+    def setstatus(self, status):
+        self.__status = status
+
+    def getstatus(self):
+        return self.__status
+
+    def setpayment(self, payment):
+        self.__payment = payment
+
+    def getpayment(self):
+        return self.__payment
+
+    # Method to display reservation information
+    def displayReservationInfo(self):
+        print(f"Reservation ID: {self.__reservationid}")
+        print(f"Status: {self.__status}")
+        print(f"Check-in Date: {self.__checkindate}")
+        print(f"Check-out Date: {self.__checkoutdate}")
+        if self.__room:
+            self.__room.displayRoomInfo()
+        if self.__payment:
+            self.__payment.displayPaymentInfo()
+
+    # Destructor
+    def __del__(self):
+        print(f"The reservation {self.__reservationid} was deleted.")
+
+
+# Customer Class
+class Customer:
+    """Class to represent a customer"""
+
+    # Constructor/initializer
+    def __init__(self, customername, email, phonenumber, reservation=None):
+        self.__customername = customername
+        self.__email = email
+        self.__phonenumber = phonenumber
+        self.__reservation = reservation  # Reservation object
+
+    # Setter and Getter methods
+    def setcustomername(self, name):
+        self.__customername = name
+
+    def getcustomername(self):
+        return self.__customername
+
+    def setemail(self, email):
+        self.__email = email
+
+    def getemail(self):
+        return self.__email
+
+    def setphonenumber(self, phone):
+        self.__phonenumber = phone
+
+    def getphonenumber(self):
+        return self.__phonenumber
+
+    def setreservation(self, reservation):
+        self.__reservation = reservation
+
+    def getreservation(self):
+        return self.__reservation
+
+    # Method to display customer information
+    def displayCustomerInfo(self):
+        print(f"Customer Name: {self.__customername}")
+        print(f"Email: {self.__email}")
+        print(f"Phone Number: {self.__phonenumber}")
+        if self.__reservation:
+            self.__reservation.displayReservationInfo()
+
+    # Destructor
+    def __del__(self):
+        print(f"The customer record for {self.__customername} was deleted.")
+
+
+# 1. Create Room Object
+room = Room(roomnumber="2 Queen Beds", roomtype="No Smoking/Desk/Safe/Coffee Maker In Room/Hair Dryer", isavailable=False, amenities=["Desk", "Safe", "Coffee Maker", "Hair Dryer"])
+
+# 2. Create Payment Object
+payment = Payment(paymentid="Mastercard (ending in 9904)", amount=201.48, paymentstatus="Processed", paymentmethod="Mastercard")
+
+# 3. Create Reservation Object
+reservation = Reservation(reservationid="52523687", checkindate="Sun, Aug 22, 2010 - 03:00 PM", checkoutdate="Tue, Aug 24, 2010 - 12:00 PM", room=room, status="Confirmed", payment=payment)
+
+# 4. Create Customer Object
+customer = Customer(customername="Ted H Vera", email="tedvera@mac.com", phonenumber="505-661-1110", reservation=reservation)
+
+# Display information using the object's methods
+
+# Customer Info
+print("Customer Information:")
+customer.displayCustomerInfo()
+
+# Reservation Info
+print("\nReservation Information:")
+reservation.displayReservationInfo()
+
+# Room Info
+print("\nRoom Information:")
+room.displayRoomInfo()
+
+# Payment Info
+print("\nPayment Information:")
+payment.displayPaymentInfo()
